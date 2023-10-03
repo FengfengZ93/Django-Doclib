@@ -81,7 +81,7 @@ DATABASES = {
 
         'NAME': 'Doctlib',
         'USER': 'postgres',
-        'PASSWORD': 'Brgm123456',
+        'PASSWORD': '20201229',
         'HOST': 'localhost',
         'PORT': '5432',
     }
