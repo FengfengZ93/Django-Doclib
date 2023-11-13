@@ -17,7 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from application.views import accueil, comptes, edaia, associationMedecinPatient
+from application.views import accueil, comptes, edaia, associationMedecinPatient, UserHealthData, StressEvaluation
 from authentification.views import connexion, deconnexion, inscription 
 
 urlpatterns = [
@@ -26,6 +26,8 @@ urlpatterns = [
     path("", connexion, name="connexion"),
     path("comptes", comptes, name="comptes"),
     path("edaia", edaia, name="edaia"),
+    path("UserHealthData", UserHealthData, name="UserHealthData"),
+    path('StressEvaluation', StressEvaluation, name='StressEvaluation'),
     path("associationMedecinPatient", associationMedecinPatient, name="associationMedecinPatient"),
     path("deconnexion", deconnexion, name="deconnexion"),
     path("inscription", inscription, name="inscription"),

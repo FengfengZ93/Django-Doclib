@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<title>Stress Evaluation Form</title>
+
+<h1>Welcome to the Stress Level Evaluation {{ prenom }}!</h1>
+<form method="post">
+    {% csrf_token %}
+    
+    <div>
+        <label for="periodicite_jours">Periodicity (days):</label>
+        <input type="number" id="periodicite_jours" name="periodicite_jours" value="{{ formulaire.periodicite_jours.value }}" min="1">
+    </div>
+    <div>
+        <label for="is_late">Is Late:</label>
+        <input type="checkbox" id="is_late" name="is_late" {% if formulaire.is_late.value %}checked{% endif %}>
+    </div>
+
+    <h2>Symptom Scores</h2>
+    {{ formulaire.irritability.label_tag }} {{ formulaire.irritability }}
+    {{ formulaire.feelings_of_depression.label_tag }} {{ formulaire.feelings_of_depression }}
+    {{ formulaire.dry_mouth_or_sore_throat.label_tag }} {{ formulaire.dry_mouth_or_sore_throat }}
+    {{ formulaire.impulsive_actions_or_gestures.label_tag }} {{ formulaire.impulsive_actions_or_gestures }}
+    {{ formulaire.teeth_grinding.label_tag }} {{ formulaire.teeth_grinding }}
+    {{ formulaire.difficulty_staying_seated.label_tag }} {{ formulaire.difficulty_staying_seated }}
+    {{ formulaire.nightmares.label_tag }} {{ formulaire.nightmares }}
+    {{ formulaire.diarrhea.label_tag }} {{ formulaire.diarrhea }}
+
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}

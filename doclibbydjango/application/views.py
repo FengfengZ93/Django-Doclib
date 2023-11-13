@@ -3,6 +3,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 from authentification.models import Utilisateur, medecinPatient
 
+from application.forms import UserHealthDataForm, StressEvaluationForm
+import os
+from django.http import HttpResponse
+import datetime
+
+
 @login_required
 def accueil(request):
     prenom = request.user.username
@@ -70,3 +76,27 @@ def associationMedecinPatient(request):
                   {"listePatientsNonAssocies" : listePatientsNonAssocies,
                    "medecins" : medecins,
                    "tableAssociationMedecinPatient" : tableAssociationMedecinPatient})
+
+@login_required
+def UserHealthData(request):
+    if request.method == "POST":
+       formulaire = UserHealthDataForm(request.POST)
+       if formulaire.is_valid():
+           sauvagarde = formulaire.save() 
+    else:
+        formulaire = UserHealthDataForm()
+    return render(request,
+                  "UserHealthData.html",
+                  {"formulaire" : formulaire})
+
+@login_required
+def StressEvaluation(request):
+    if request.method == "POST":
+       formulaire = StressEvaluationForm(request.POST)
+       if formulaire.is_valid():
+           sauvagarde = formulaire.save() 
+    else:
+        formulaire = StressEvaluationForm()
+    return render(request,
+                  "StressEvaluation.html",
+                  {"formulaire" : formulaire})

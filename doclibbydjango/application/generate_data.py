@@ -56,6 +56,8 @@ for _ in range(20):
         'inr': Decimal(random.uniform(0.8, 2.5))
     }
     data.append(entry)
+    
+# Example to generate 10 random datas with np.random.choice: 'poids': Decimal(np.random.choice(np.arange(40, 150), 10))
 
 # Save the data to a CSV file
 csv_file = 'random_healthData.csv'
