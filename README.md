@@ -49,8 +49,6 @@ python manage.py runserver
 - Stress evaluations can be recorded and tracked over time.
 - Administrators can manage user accounts and view data in the Django Admin panel.
 
-## Contributing
-Contributions to this project are welcome. Please fork the repository and submit a pull request with your changes.
 
 ## License
 [MIT License](LICENSE)
