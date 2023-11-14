@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription</title>
+    <title>Creat a new patient</title>
 </head>
 <body>
-    <h1>Inscription</h1>
+    <h1>Creat a new patient</h1>
     <p>Voici une idée de Mot de passe :<br>
         {{ ideeMDP }}
     </p>
     <form method="post">
         {% csrf_token %}
-        <input type="text" name="username" required>
+        <input type="text" name="username" value={{newPatient}} readonly required>
         <input type="password" name="motDePasse" required>
         <input type="submit">
     </form>

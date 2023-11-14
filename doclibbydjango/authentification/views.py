@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from authentification.models import Utilisateur
 import random 
@@ -27,9 +28,11 @@ def deconnexion(request):
     logout(request)
     return redirect("connexion")
 
-
-def inscription(request):
+@login_required
+def CreatPatient(request):
     ideeMDP = "".join([random.choice(string.printable) for _ in range(12)]).replace(" ", "")
+    # newPatient will be added based on the last id of patient
+    newPatient = "P"+str(int(list(Utilisateur.objects.filter(role="patient"))[-1].username.split("P")[1])+1)
     if request.method == "POST": 
         username = request.POST["username"]
         motDePasse = request.POST["motDePasse"]
@@ -39,7 +42,7 @@ def inscription(request):
         return redirect("connexion")
     
     return render(request,
-                      "inscription.html", {"ideeMDP" : ideeMDP.replace(" ", "")})
+                      "CreatPatient.html", {"ideeMDP" : ideeMDP.replace(" ", ""), "newPatient": newPatient})
 
 
 

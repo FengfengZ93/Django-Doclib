@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 from authentification.models import Utilisateur, medecinPatient
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 
 from application.forms import UserHealthDataForm, StressEvaluationForm
 import os
@@ -14,6 +16,36 @@ def accueil(request):
     prenom = request.user.username
     return render(request,"accueil.html",
                   context={"prenom": prenom})
+
+# @login_required
+# def accueil(request):
+#     utilisateur = Utilisateur.objects.get(username=request.user.username)
+
+#     # Check if it's the user's first login
+#     if utilisateur.first_login:
+#         # Redirect to change password page
+#         return redirect('change_password')
+
+#     prenom = request.user.username
+#     return render(request,"accueil.html",
+#                   context={"prenom": prenom})
+
+# @login_required
+# def change_password(request):
+#     if request.method == 'POST':
+#         form = PasswordChangeForm(request.user, request.POST)
+#         if form.is_valid():
+#             user = form.save()
+#             user.first_login = False  # Set first_login to False after password change
+#             user.save()
+#             update_session_auth_hash(request, user)  # Important!
+#             return redirect('accueil')
+#         else:
+#             # Handle invalid form
+#             pass
+#     else:
+#         form = PasswordChangeForm(request.user)
+#     return render(request, 'change_password.html', {'form': form})
 
 
 @login_required

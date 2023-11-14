@@ -5,7 +5,8 @@ class Utilisateur(AbstractUser):
     patient = "patient"
     medecin = "medecin"
     responsable = "responsable"
-    
+    # first_login = models.BooleanField(default=True)
+
     lesRoles = (
         ('patient', 'patient'),
         ('medecin', 'medecin'),
