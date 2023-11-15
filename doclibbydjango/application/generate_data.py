@@ -2,6 +2,7 @@ import random
 import csv
 from decimal import Decimal
 from datetime import timedelta, date
+from .models import UserHealthData
 
 # Function to generate a random date
 def random_date(start, end):
@@ -86,7 +87,7 @@ with open(csv_file, 'w', newline='') as file:
 
 print(f'Data has been saved to {csv_file}')
 
-from models import UserHealthData
+
 
 def import_csv_data(csv_file):
     with open(csv_file, 'r') as file:

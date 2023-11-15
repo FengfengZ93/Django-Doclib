@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate
 from authentification.models import Utilisateur, medecinPatient
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
+from application.models import UserHealthData
 
 from application.forms import UserHealthDataForm, StressEvaluationForm
 import os
@@ -80,6 +81,63 @@ def edaia(request):
         return redirect("https://media.tenor.com/2euSOQYdz8oAAAAj/this-was-technically-illegal-maclen-stanley.gif")
     else:
         return render(request, "edaia.html")
+
+@login_required
+def historique(request):
+    """
+     # Je récupère les champs de la table formulaire santé
+    champsFormulaireSante = [field.name for field in UserHealthData._meta.get_fields()]
+    # Je récupère les ids des lignes de la table formulaire santé
+    idDesFormulaires = [valeur.id for valeur in UserHealthData.objects.all()]
+    # Je crée une liste qui contiendra les valeurs des lignes
+    # Il y a autant d'élément que de ligne, donc que d'ids récupéré
+    # FormulaireSante.objects.filter(id=id).values()[0].values()
+    # Dans le code ci-dessus je récupère la ligne ayant un certain id
+    # Ensuite je récupère les valeurs de la ligne .values
+    # Le 1er élément qui est le dictionnaire des colonnes/valeurs
+    # et enfin uniquement les valeurs
+    
+    #dataFormulaireSante = [FormulaireSante.objects.filter(id=id).values()[0].values() for id in idDesFormulaires]
+    # On créé une liste des données du formulaires de santé général
+    dataFormulaireSante = []
+    # On boucle dans les lignes du formulairs > ligne 1, 2, 3...
+    for id in idDesFormulaires:
+        # On récupère sous forme de liste l'ensemble de la ligne ayant un id donnée
+        info = list(UserHealthData.objects.filter(id=id).values()[0].values())
+        # On récupère l'username en nous basant sur la colonne de l'id dans la table du formulaire
+        # On écrase l'ensemble valeur parce qu'on veut pas l'ID mais le username
+        info[1] = Utilisateur.objects.filter(id=info[1])[0].username
+        # On ajoute la ligne complète dans la liste dataFormulaireSante
+        dataFormulaireSante.append(info)
+
+    # Je récupère les objets patients du médecin connecté
+    patientsDuMedecin = [patients for patients in medecinPatient.objects.filter(idMedecin=Utilisateur.objects.filter(username=request.user.username)[0])]
+    # Je récupère les IDs des patients du médecin
+    idPatientsDuMedecin = [Utilisateur.objects.filter(username=patient.idPatient)[0].id for patient in patientsDuMedecin]
+    dataFormulaireSanteMedecinPatients = []
+
+    # On boucle dans les lignes du formulairs > ligne 1, 2, 3...
+    for patient in idPatientsDuMedecin:
+        
+        # On récupère sous forme de liste l'ensemble de la ligne ayant un id donnée
+        info = list(UserHealthData.objects.filter(patient=patient).values()[0].values())
+        # On récupère l'username en nous basant sur la colonne de l'id dans la table du formulaire
+        # On écrase l'ensemble valeur parce qu'on veut pas l'ID mais le username
+        info[1] = Utilisateur.objects.filter(id=info[1])[0].username
+        # On ajoute la ligne complète dans la liste dataFormulaireSante
+        dataFormulaireSanteMedecinPatients.append(info)
+
+    print("DDDDDDDD :", dataFormulaireSante)
+    return render(request, "historique.html",
+                   {"dataFormulaireSante" : dataFormulaireSante,
+                   "champsFormulaireSante" : "22222222",
+                   "patientsDuMedecin" : patientsDuMedecin,
+                   "dataFormulaireSanteMedecinPatients" : dataFormulaireSanteMedecinPatients})
+
+    """
+    # print(":", UserHealthData.objects.all() )
+    return redirect("https://media.tenor.com/qTOYKUNpqPQAAAAC/skeleton-waiting-skeleton.gif")
+
 
 @login_required
 def associationMedecinPatient(request):

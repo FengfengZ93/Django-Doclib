@@ -1,21 +1,78 @@
-<nav>
-    <ul>
-        <li>
-            <a href="{% url 'accueil' %}">Accueil</a>
-        </li>
-        <li>Formulaires
-            <ul>
-                <li>
-                    <a href="{% url 'UserHealthData' %}" target="_blank">Formulaire de santé générale</a></li>
-                <li><a href="{% url 'StressEvaluation' %}" target="_blank">Formulaire de niveau de stress</a></li>
-            </ul>
-        </li>
-        <li><a href="">Historique</a></li>
-        {% if user.role == "medecin" %}
-            <li><a href="{% url 'edaia' %}">EDA et IA</a></li>
-        {% endif %}
-        <li><a href="{% url 'associationMedecinPatient' %}">Associé un médecin à un patient</a></li>
-        <li><a href="{% url 'comptes' %}">Comptes</a></li>
-        <li><a href="{% url 'deconnexion' %}">Déconnexion</a></li>
-    </ul>
-</nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the home page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        nav {
+            background-color: #0056b3;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            background-color: #555;
+        }
+
+        nav ul li:hover ul {
+            display: block;
+        }
+
+        nav ul li ul li {
+            display: block;
+            margin: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+
+        nav a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'accueil' %}">Accueil</a></li>
+            
+            <li><a href="{% url 'UserHealthData' %}" target="_blank">Formulaire de santé générale</a></li>
+            
+            <li><a href="{% url 'StressEvaluation' %}" target="_blank">Formulaire de niveau de stress</a></li>
+            
+            <li><a href="{% url 'historique' %}" target="_blank">Historique</a></li>
+            {% if user.role == "medecin" %}
+                <li><a href="{% url 'edaia' %}">EDA et IA</a></li>
+            {% endif %}
+            <li><a href="{% url 'associationMedecinPatient' %}">Associé un médecin à un patient</a></li>
+            <li><a href="{% url 'comptes' %}">Comptes</a></li>
+            <li><a href="{% url 'deconnexion' %}">Déconnexion</a></li>
+        </ul>
+    </nav>
+</body>
+</html>
