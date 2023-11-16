@@ -17,7 +17,7 @@ This application is a Django-based web platform designed for health management, 
 <!-- <img src="Django_Doclib.png" alt="Diagram of structure" title="Optional title"> -->
 
 ## Data (database schema)
-![authentification_utilisateur](/Django-Doclib/authentification_utilisateur.png)
+![authentification_utilisateur](authentification_utilisateur.png)
 
 ## Installation
 To set up the project, follow these steps:
