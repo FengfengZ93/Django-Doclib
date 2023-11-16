@@ -13,9 +13,9 @@ This application is a Django-based web platform designed for health management, 
 
 ## Diagram of structure
 
-![Diagram of structure](Django-Doclib\Django_Doclib.png)
+![Diagram of structure](Django_Doclib.png)
 
-<img src="Django-Doclib\Django_Doclib.png" alt="Diagram of structure" title="Optional title">
+<img src="Django_Doclib.png" alt="Diagram of structure" title="Optional title">
 
 ## Installation
 To set up the project, follow these steps:
