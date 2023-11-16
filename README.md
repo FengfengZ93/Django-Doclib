@@ -8,7 +8,7 @@ This application is a Django-based web platform designed for health management, 
 - Patient health data tracking and management.
 - Stress evaluation recording and analysis.
 - User roles including patients, doctors, and administrators.
-- User (Doctot/Patient) authentication and management.
+- User (Doctots/Patients) authentication and management.
 
 ## Diagram of structure
 
@@ -38,7 +38,7 @@ python manage.py createsuperuser
 5. Run the development server:
 python manage.py runserver
 
-6. Access the application at `http://127.0.0.1:8000/`.
+6. Access the application at `http://127.0.0.1:8000/`and `http://127.0.0.1:8000/admin`
 
 ## Application Structure
 
