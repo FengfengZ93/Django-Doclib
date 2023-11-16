@@ -5,10 +5,10 @@ Project Django-doctor lib
 This application is a Django-based web platform designed for health management, allowing tracking of user health data and stress evaluations. It features two main components: a health data management system (`application`) and a user authentication system (`authentification`).
 
 ## Features
-- User health data tracking and management.
+- Patient health data tracking and management.
 - Stress evaluation recording and analysis.
 - User roles including patients, doctors, and administrators.
-- Customized user authentication and management.
+- User (Doctot/Patient) authentication and management.
 
 ## Diagram of structure
 
