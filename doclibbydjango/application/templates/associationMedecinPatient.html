@@ -3,7 +3,56 @@
 {% block content %}
 <title>Association Medecin Patient</title>
 
-<h1>Bonjour {{prenom}} !</h1>
+<style>
+    h1, p, form, table {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    form {
+        background-color: #f5f5f5;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+
+    select, input[type="submit"] {
+        width: 100%;
+        padding: 8px;
+        margin-top: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    input[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        border: none;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f5f5f5;
+    }
+</style>
+
+<h1>Bonjour {{ prenom }} !</h1>
 <p>You want to creat a new patient?</p>
 <p><a href="{% url 'CreatPatient' %}">Creat a new patient</a></p>
 
@@ -13,30 +62,26 @@
     <label>Choisissez le médecin à associer :</label><br>
     <select name="medecin" id="medecin" required>
         <option value="">Choisissez un médecin</option>
-        {% for medecin in  medecins %}
-        <option value={{ medecin }}>{{ medecin }}</option>
+        {% for medecin in medecins %}
+        <option value="{{ medecin }}">{{ medecin }}</option>
         {% endfor %}
     </select>
 
     <label>Choisissez le patient à associer :</label><br>
     <select name="patient" id="patient" required>
         <option value="">Choisissez un patient</option>
-        {% for patient in  listePatientsNonAssocies %}
-        <option value={{ patient }}>{{ patient }}</option>
+        {% for patient in listePatientsNonAssocies %}
+        <option value="{{ patient }}">{{ patient }}</option>
         {% endfor %}
     </select>
-    <input type="submit">
+    <input type="submit" value="Associer">
 </form>
 
 <h2>Table d'association Medecin Patient</h2>
 <table>
     <tr>
-        <th>
-            Medecin
-        </th>
-        <th>
-            Patient
-        </th>
+        <th>Medecin</th>
+        <th>Patient</th>
     </tr>
     {% for ligne in tableAssociationMedecinPatient %}
     <tr>

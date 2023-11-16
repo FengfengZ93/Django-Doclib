@@ -3,17 +3,60 @@
 {% block content %}
 <title>Comptes</title>
 
+<style>
+    h1 {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    form {
+        max-width: 500px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    form label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    form input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    form input[type="submit"] {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        display: block;
+        width: 100%;
+    }
+
+    form input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+</style>
+
 <h1>Mise à jour du mot de passe</h1>
-<form method = "post">
+<form method="post">
     {{ message }}
     {% csrf_token %}
-    <label>Indiquez votre ancien mot de passe</label><br>
-    <input type="password" required name="ancienMDP"><br>
-    <label>Indiquez un nouveau mot de passe :</label><br>
-    <input type="password" required pattern={{ regexMDP }} name="nouveauMDP1"><br>
-    <label>Indiquez de nouveau votre mot de passe</label><br>
-    <input type="password" required pattern="{{ regexMDP }}" name="nouveauMDP2"><br>
-    <input type="submit">
+    <label>Indiquez votre ancien mot de passe</label>
+    <input type="password" required name="ancienMDP">
+    <label>Indiquez un nouveau mot de passe :</label>
+    <input type="password" required pattern="{{ regexMDP }}" name="nouveauMDP1">
+    <label>Indiquez de nouveau votre mot de passe</label>
+    <input type="password" required pattern="{{ regexMDP }}" name="nouveauMDP2">
+    <input type="submit" value="Mettre à jour">
 </form>
-
 {% endblock %}
