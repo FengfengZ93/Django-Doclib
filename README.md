@@ -13,7 +13,7 @@ This application is a Django-based web platform designed for health management, 
 
 ## Diagram of structure
 
-![Diagram of structure](Django_Doclib.drawio.png)
+![Diagram of structure](D:\Formation IA\Django-Doclib\Django_Doclib.drawio.png)
 
 <img src="Django_Doclib.drawio.png" alt="Diagram of structure" title="Optional title">
 
