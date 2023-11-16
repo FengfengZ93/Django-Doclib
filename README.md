@@ -21,10 +21,9 @@ This application is a Django-based web platform designed for health management, 
 ![authentification_user](authentification_user.png)
 
 The Users table includes the connection information of each user (username and password encrypted with Django), as well as their role on the platform which will determine their access to different features of the app.
-admin: can view all medical data entered by patients, can assign patients to doctors
-doctor: can view medical data only from patients associated with him, can visualize this data in graphical form
-patient: can only view their own medical data, can access the form to enter new data.
-
+- admin: can view all medical data entered by patients, can assign patients to doctors
+- doctor: can view medical data only from patients associated with him, can visualize this data in graphical form
+- patient: can only view their own medical data, can access the form to enter new data.
 
 
 ## Installation
