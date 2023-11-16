@@ -10,12 +10,15 @@ This application is a Django-based web platform designed for health management, 
 - User roles including patients, doctors, and administrators.
 - Customized user authentication and management.
 
-
 ## Diagram of structure
 
 ![Diagram of structure](Django_Doclib.png)
 
 <img src="Django_Doclib.png" alt="Diagram of structure" title="Optional title">
+
+## Data (database schema)
+![authentification_utilisateur](authentification_utilisateur.png)
+
 
 ## Installation
 To set up the project, follow these steps:
